@@ -1,0 +1,15 @@
+language: java
+
+cache:
+  directories:
+    - "$HOME/.gradle"
+    - "$HOME/.m2/repository"
+
+services:
+  - xvfb
+  
+script:
+  - ./gradlew check
+
+after_failure:
+ - cat /home/travis/build/welldoer/Book-DeepIntoSpringBoot/build/reports/tests/test/index.html
