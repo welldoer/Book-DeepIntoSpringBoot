@@ -17,13 +17,15 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
+	mavenLocal()
+
 	maven { url 'https://maven.aliyun.com/repository/public/' }
 	maven { url 'https://maven.aliyun.com/repository/jcenter/' }
 	maven { url 'https://maven.aliyun.com/repository/release/' }
 	maven { url 'https://maven.aliyun.com/repository/spring/' }
 	maven { url 'https://maven.aliyun.com/repository/spring-plugin/' }
 	maven { url 'https://maven.aliyun.com/repository/google/' }
-	mavenLocal()
+
 	mavenCentral()
 }
 
@@ -35,9 +37,18 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
+	
+    implementation 'com.google.guava:guava:28.1-jre'
+	implementation 'commons-beanutils:commons-beanutils:1.9.2'
+	implementation 'org.apache.commons:commons-compress:1.14'
+	implementation 'org.apache.commons:commons-lang3:3.9'
+	
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+	testImplementation 'org.assertj:assertj-core:3.11.1'
+	testImplementation 'org.mockito:mockito-core:2.28.2'
 }
 
 test {

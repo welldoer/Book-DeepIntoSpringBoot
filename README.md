@@ -4,6 +4,7 @@
   Deep into Spring Boot，陈韶健 著，机械工业出版社，2016.10
 
 [![Build Status](https://travis-ci.com/welldoer/Book-DeepIntoSpringBoot.svg?branch=master)](https://travis-ci.com/welldoer/Book-DeepIntoSpringBoot)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=welldoer_Book-DeepIntoSpringBoot&metric=coverage)](https://sonarcloud.io/dashboard?id=welldoer_Book-DeepIntoSpringBoot)
 
 
 ## 初始环境准备清单
@@ -24,9 +25,9 @@
 
 ~~8. 配置基本的 Travis-CI 环境，添加对应 Badge~~
 
-9. 配置 SonarCloud 环境，向 Travis 中添加 SONAR_TOKEN 变量，添加常用的依赖
+~~9. 配置 SonarCloud 环境，向 Travis 中添加 SONAR_TOKEN 变量，添加常用的依赖~~
 
-10. 补充 Badges 信息。至此，环境准备工作结束
+~~10. 补充 Badges 信息。至此，环境准备工作结束~~
 
 
 ## 章节学习清单

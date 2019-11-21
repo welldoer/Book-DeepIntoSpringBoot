@@ -1,15 +1,22 @@
 language: java
 
+addons:
+  sonarcloud:
+    organization: "welldoer-github"
+    token:
+      secure: $SONAR_TOKEN  # Set in the settings page of your CI project, as a secure variable
+
 cache:
   directories:
     - "$HOME/.gradle"
     - "$HOME/.m2/repository"
+    - "$HOME/.sonar/cache"
 
 services:
   - xvfb
   
 script:
-  - ./gradlew check
+  - test -n $SONAR_TOKEN && ./gradlew sonarqube
 
 after_failure:
  - cat /home/travis/build/welldoer/Book-DeepIntoSpringBoot/build/reports/tests/test/index.html
