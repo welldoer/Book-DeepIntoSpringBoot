@@ -1,4 +1,4 @@
-package net.blogjava.welldoer.BookDeepIntoSpringBoot;
+package net.blogjava.welldoer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

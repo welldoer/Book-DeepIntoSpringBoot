@@ -1,4 +1,4 @@
-package net.blogjava.welldoer.BookDeepIntoSpringBoot;
+package net.blogjava.welldoer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
