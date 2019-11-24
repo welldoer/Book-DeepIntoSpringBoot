@@ -45,7 +45,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2:1.4.200'
+	runtimeOnly 'com.h2database:h2'
 	
     implementation 'com.google.guava:guava:28.1-jre'
 	implementation 'commons-beanutils:commons-beanutils:1.9.2'
@@ -56,14 +56,8 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 
-	testImplementation 'org.assertj:assertj-core:3.14.0'
+	testImplementation 'org.assertj:assertj-core:3.11.1'
 	testImplementation 'org.mockito:mockito-core:2.28.2'
-	
-	testCompile "org.testcontainers:mysql:1.12.3"
-	testCompile "org.testcontainers:postgresql:1.12.3"	
-	testImplementation "org.testcontainers:junit-jupiter:1.12.3"
-	testCompile 'mysql:mysql-connector-java:8.0.14'
-	testCompile 'org.postgresql:postgresql:42.0.0'
 }
 
 test {
