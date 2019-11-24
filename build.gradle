@@ -56,8 +56,14 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 
-	testImplementation 'org.assertj:assertj-core:3.11.1'
+	testImplementation 'org.assertj:assertj-core:3.14.0'
 	testImplementation 'org.mockito:mockito-core:2.28.2'
+	
+	testCompile "org.testcontainers:mysql:1.12.3"
+	testCompile "org.testcontainers:postgresql:1.12.3"	
+	testImplementation "org.testcontainers:junit-jupiter:1.12.3"
+	testCompile 'mysql:mysql-connector-java:8.0.14'
+	testCompile 'org.postgresql:postgresql:42.0.0'
 }
 
 test {
