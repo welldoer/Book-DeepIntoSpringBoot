@@ -16,7 +16,7 @@ services:
   - xvfb
   
 script:
-  - test -n $SONAR_TOKEN && ./gradlew sonarqube --stacktrace
+  - test -n $SONAR_TOKEN && ./gradlew sonarqube --stacktrace --info
 
 after_failure:
  - cat /home/travis/build/welldoer/Book-DeepIntoSpringBoot/build/reports/tests/test/index.html
