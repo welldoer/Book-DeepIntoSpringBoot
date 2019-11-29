@@ -44,7 +44,7 @@
 #### 第 2 章  在 Spring Boot 中使用数据库
 
 - [X] 2.1 使用 MySQL
-- [ ] 2.2 使用 Redis
+- [X] 2.2 使用 Redis
 - [ ] 2.3 使用 MongoDB
 - [ ] 2.4 使用 Neo4j
 - [ ] 2.5 小结
