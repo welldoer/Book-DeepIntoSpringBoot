@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.data.redis.DataRedisTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 import org.testcontainers.containers.GenericContainer;
 
 import net.blogjava.welldoer.entity.Department;
@@ -23,8 +23,9 @@ import net.blogjava.welldoer.entity.Role;
 import net.blogjava.welldoer.entity.User;
 import net.blogjava.welldoer.repository.UserRedis;
 
-@SpringBootTest
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@DataRedisTest
+@EnableSpringConfigured
+@ComponentScan(basePackageClasses=RedisConfig.class)
 class RedisTest {
 	private static Logger logger = LoggerFactory.getLogger(RedisTest.class);
 
