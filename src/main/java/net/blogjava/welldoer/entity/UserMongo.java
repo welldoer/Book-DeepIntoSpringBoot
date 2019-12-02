@@ -27,8 +27,6 @@ public class UserMongo {
 	private Date registrationDate = new Date(System.currentTimeMillis());
 	private Set<String> roles = new HashSet<>();
 	
-	public UserMongo() { }
-	
 	@PersistenceConstructor
 	public UserMongo(String userId, String username, String password, String name, String email,
 			Date registrationDate, Set<String> roles) {
