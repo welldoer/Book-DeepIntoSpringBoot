@@ -46,8 +46,8 @@
 - [X] 2.1 使用 MySQL
 - [X] 2.2 使用 Redis
 - [X] 2.3 使用 MongoDB
-- [ ] 2.4 使用 Neo4j
-- [ ] 2.5 小结
+- [X] 2.4 使用 Neo4j
+- [X] 2.5 小结
 
 #### 第 3 章  Spring Boot 界面设计
 

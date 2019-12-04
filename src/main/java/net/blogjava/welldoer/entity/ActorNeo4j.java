@@ -12,8 +12,6 @@ public class ActorNeo4j {
 	private String name;
 	private int born;
 
-	public ActorNeo4j() { }
-	
 	public Long getId() {
 		return id;
 	}
