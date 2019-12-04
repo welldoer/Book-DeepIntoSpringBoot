@@ -6,7 +6,7 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
-@RelationshipEntity(type = "ACTS_IN")
+@RelationshipEntity(type = "扮演")
 public class RoleNeo4j {
 	@Id
 	@GeneratedValue

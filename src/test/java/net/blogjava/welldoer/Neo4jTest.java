@@ -2,6 +2,9 @@ package net.blogjava.welldoer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,16 +43,16 @@ class Neo4jTest {
     	movieNeo4jRepository.deleteAll();
     	
     	MovieNeo4j matrix1 = new MovieNeo4j();
-    	matrix1.setTitle("The Matrix");
-    	matrix1.setYear("1999-03-31");
+    	matrix1.setName("The Matrix");
+    	matrix1.setCreateDate(new SimpleDateFormat("YYYY-MM-DD").parse("1999-03-31"));
 
     	MovieNeo4j matrix2 = new MovieNeo4j();
-    	matrix2.setTitle("The Matrix Reloaded");
-    	matrix2.setYear("2003-05-07");
+    	matrix2.setName("The Matrix Reloaded");
+    	matrix2.setCreateDate(new SimpleDateFormat("YYYY-MM-DD").parse("2003-05-07"));
 
     	MovieNeo4j matrix3 = new MovieNeo4j();
-    	matrix3.setTitle("The Matrix Revolutions");
-    	matrix3.setYear("2003-10-27");
+    	matrix3.setName("The Matrix Revolutions");
+    	matrix3.setCreateDate(new SimpleDateFormat("YYYY-MM-DD").parse("2003-10-27"));
 
     	ActorNeo4j keanu = new ActorNeo4j();
     	keanu.setName("Keanu Reeves");
@@ -83,9 +86,9 @@ class Neo4jTest {
 	void test() {
 		assertTrue(neo4jContainer.isRunning());
 		
-		MovieNeo4j movie = movieNeo4jRepository.findByTitle("The Matrix");
+		MovieNeo4j movie = movieNeo4jRepository.findByName("The Matrix");
 		assertNotNull(movie);
-		logger.info("======movie======= movie: {}, {}", movie.getTitle(), movie.getYear());
+		logger.info("======movie======= movie: {}, {}", movie.getName(), movie.getCreateDate());
 		for (RoleNeo4j role : movie.getRoles()) {
 			logger.info("===== actor: {}, role: {}", role.getActor().getName(), role.getRole());
 		}

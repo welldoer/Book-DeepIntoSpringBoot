@@ -1,23 +1,26 @@
 package net.blogjava.welldoer.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.typeconversion.DateLong;
 
 @NodeEntity
 public class MovieNeo4j {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String title;
-	private String year;
-	private String tagline;
+	private String name;
+	private String photo;
+	@DateLong
+	private Date createDate;
 	
-	@Relationship(type = "ACTS_IN", direction = Relationship.INCOMING)
+	@Relationship(type = "扮演", direction = Relationship.INCOMING)
 	List<RoleNeo4j> roles = new ArrayList<>();
 
 	public RoleNeo4j addRole(ActorNeo4j actor, String roleName) {
@@ -30,28 +33,28 @@ public class MovieNeo4j {
 		return id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getYear() {
-		return year;
+	public String getPhoto() {
+		return photo;
 	}
 
-	public void setYear(String year) {
-		this.year = year;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
-	public String getTagline() {
-		return tagline;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setTagline(String tagline) {
-		this.tagline = tagline;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 	public List<RoleNeo4j> getRoles() {
