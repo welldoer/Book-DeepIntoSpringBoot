@@ -3,7 +3,6 @@ package net.blogjava.welldoer;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

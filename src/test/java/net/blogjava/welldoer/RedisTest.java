@@ -18,6 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 import org.testcontainers.containers.GenericContainer;
 
+import net.blogjava.welldoer.config.RedisConfig;
 import net.blogjava.welldoer.entity.Department;
 import net.blogjava.welldoer.entity.Role;
 import net.blogjava.welldoer.entity.User;
@@ -25,7 +26,7 @@ import net.blogjava.welldoer.repository.UserRedis;
 
 @DataRedisTest
 @EnableSpringConfigured
-@ComponentScan(basePackageClasses=RedisConfig.class)
+@ComponentScan(basePackageClasses=RedisConfig.class, basePackages = "net.blogjava.welldoer.repository")
 class RedisTest {
 	private static Logger logger = LoggerFactory.getLogger(RedisTest.class);
 

@@ -1,4 +1,4 @@
-package net.blogjava.welldoer;
+package net.blogjava.welldoer.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
