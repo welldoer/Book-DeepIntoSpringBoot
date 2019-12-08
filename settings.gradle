@@ -1,3 +1,4 @@
 rootProject.name = 'Book-DeepIntoSpringBoot'
 
 include 'HelloController'
+include 'RedisSubPub'
