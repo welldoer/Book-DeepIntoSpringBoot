@@ -28,6 +28,12 @@ sourceCompatibility = '1.8'
 bootJar.enabled = false
 
 subprojects {
+	plugins {
+		id 'org.springframework.boot'
+		id 'io.spring.dependency-management'
+		id 'java'
+	}
+
 	repositories {
 		mavenLocal()
 	
