@@ -36,11 +36,9 @@ subprojects {
 		}
 	}
 
-	plugins {
-		id 'org.springframework.boot'
-		id 'io.spring.dependency-management'
-		id 'java'
-	}
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java'
 
 	repositories {
 		mavenLocal()
