@@ -28,6 +28,14 @@ sourceCompatibility = '1.8'
 bootJar.enabled = false
 
 subprojects {
+	buildscript {
+		repositories {
+			maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+			mavenLocal()
+			mavenCentral()
+		}
+	}
+
 	plugins {
 		id 'org.springframework.boot'
 		id 'io.spring.dependency-management'
