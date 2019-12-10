@@ -1,36 +1,7 @@
-plugins {
-	id 'org.springframework.boot'
-	id 'io.spring.dependency-management'
-	id 'java'
-}
-
-group = 'net.blogjava.welldoer'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
-
-repositories {
-	maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
-	mavenLocal()
-	mavenCentral()
-}
-
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	
-    implementation 'com.google.guava:guava:28.1-jre'
-    implementation 'com.google.code.gson:gson:2.8.6'
-	implementation 'org.apache.commons:commons-lang3:3.9'
-	
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	
 	testCompile "org.testcontainers:testcontainers:1.12.3"
 	testImplementation "org.testcontainers:junit-jupiter:1.12.3"
-}
-
-test {
-	useJUnitPlatform()
 }
