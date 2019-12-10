@@ -20,7 +20,6 @@ sonarqube {
 allprojects {
 	group = 'net.blogjava.welldoer'
 	version = '0.0.1-SNAPSHOT'
-	sourceCompatibility = '1.8'
 	
 	repositories {
 		mavenLocal()
@@ -48,6 +47,8 @@ subprojects {
 	apply plugin: 'org.springframework.boot' version '2.2.1.RELEASE'
 	apply plugin: 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	apply plugin: 'java'
+
+	sourceCompatibility = '1.8'
 
 	sonarqube {
 		properties {
