@@ -63,6 +63,7 @@ subprojects {
 	sonarqube {
 		properties {
 			property "sonar.projectKey", "welldoer_Book-DeepIntoSpringBoot"
+			property "sonar.sources", "src"
 		}
 	}
 	
