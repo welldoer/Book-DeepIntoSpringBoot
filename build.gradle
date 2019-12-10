@@ -36,14 +36,6 @@ allprojects {
 }
 
 subprojects {
-	buildscript {
-		repositories {
-			maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
-			mavenLocal()
-			mavenCentral()
-		}
-	}
-
 	apply plugin: 'org.springframework.boot' version '2.2.1.RELEASE'
 	apply plugin: 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	apply plugin: 'java'
