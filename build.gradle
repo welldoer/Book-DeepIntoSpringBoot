@@ -7,6 +7,10 @@ buildscript {
 }
 
 plugins {
+	id 'org.springframework.boot' version '2.2.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+
 	id "org.sonarqube" version "2.8"
 	id 'jacoco'
 }
@@ -16,6 +20,12 @@ sonarqube {
 		property "sonar.projectKey", "welldoer_Book-DeepIntoSpringBoot"
 	}
 }
+
+group = 'net.blogjava.welldoer'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+bootJar.enabled = false
 
 allprojects {
 	group = 'net.blogjava.welldoer'
@@ -36,8 +46,16 @@ allprojects {
 }
 
 subprojects {
-	apply plugin: 'org.springframework.boot' version '2.2.1.RELEASE'
-	apply plugin: 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	buildscript {
+		repositories {
+			maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+			mavenLocal()
+			mavenCentral()
+		}
+	}
+
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'java'
 
 	sourceCompatibility = '1.8'
