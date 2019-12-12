@@ -64,23 +64,28 @@ public class MovieController {
 	
 	@GetMapping("/{id}")
 	public ModelAndView show(ModelMap model, @PathVariable Long id) {
-		Optional<MovieNeo4j> movie = movieRepository.findById(id);
-		model.addAttribute("movie", movie);
+		Optional<MovieNeo4j> tmpMovie = movieRepository.findById(id);
+		if (tmpMovie.isPresent()) {
+			MovieNeo4j movie = tmpMovie.get();
+			model.addAttribute("movie", movie);
+		}
 		
 		return new ModelAndView("movie/show");
 	}
 	
 	@GetMapping("/edit/{id}")
 	public ModelAndView update(ModelMap model, @PathVariable Long id) {
-		Optional<MovieNeo4j> movie = movieRepository.findById(id);
-		String[] files = {"/images/movie/西游记.jpg", "/images/movie/西游记续集.jpg"};
-		String[] rolelist = {"唐僧", "孙悟空", "猪八戒", "沙僧"};
-		Iterable<ActorNeo4j> actors = actorRepository.findAll();
-		
-		model.addAttribute("files", files);
-		model.addAttribute("rolelist", rolelist);
-		model.addAttribute("movie", movie);
-		model.addAttribute("actors", actors);
+		Optional<MovieNeo4j> tmpMovie = movieRepository.findById(id);
+		if (tmpMovie.isPresent()) {
+			String[] files = {"/images/movie/西游记.jpg", "/images/movie/西游记续集.jpg"};
+			String[] rolelist = {"唐僧", "孙悟空", "猪八戒", "沙僧"};
+			Iterable<ActorNeo4j> actors = actorRepository.findAll();
+			
+			model.addAttribute("files", files);
+			model.addAttribute("rolelist", rolelist);
+			model.addAttribute("movie", tmpMovie.get());
+			model.addAttribute("actors", actors);
+		}
 		
 		return new ModelAndView("movie/edit");
 	}

@@ -3,8 +3,10 @@ package net.blogjava.welldoer.controller;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +68,11 @@ class MovieControllerTest {
 	
 	@Test
 	void testUrlShow() throws Exception {
+		MovieNeo4j movie = new MovieNeo4j();
+		movie.setName("testShow");
+		Optional<MovieNeo4j> optionalMovie = Optional.of(movie);
+		Mockito.when(mockMovieRepository.findById(1L)).thenReturn(optionalMovie);
+
 		mockMvc.perform(
 				MockMvcRequestBuilders.get("/movie/1")
 					.contentType(MediaType.APPLICATION_JSON)
@@ -76,6 +83,11 @@ class MovieControllerTest {
 
 	@Test
 	void testUrlEdit() throws Exception {
+		MovieNeo4j movie = new MovieNeo4j();
+		movie.setName("testEdit");
+		Optional<MovieNeo4j> optionalMovie = Optional.of(movie);
+		Mockito.when(mockMovieRepository.findById(1L)).thenReturn(optionalMovie);
+
 		mockMvc.perform(
 				MockMvcRequestBuilders.get("/movie/edit/1")
 					.contentType(MediaType.APPLICATION_JSON)
