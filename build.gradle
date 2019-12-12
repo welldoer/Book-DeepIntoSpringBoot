@@ -57,14 +57,14 @@ subprojects {
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'java'
+	apply plugin: 'org.sonarqube'
+	apply plugin: 'jacoco'
 
 	sourceCompatibility = '1.8'
 
 	sonarqube {
 		properties {
 			property "sonar.projectKey", "welldoer_Book-DeepIntoSpringBoot"
-			property "sonar.sources", "src/main"
-			property "sonar.tests", "src/test"
 		}
 	}
 	
