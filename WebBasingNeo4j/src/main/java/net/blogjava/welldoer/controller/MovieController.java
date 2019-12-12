@@ -41,6 +41,11 @@ public class MovieController {
 	@Autowired
 	private Neo4jPagesService<MovieNeo4j> pagesService;
 
+	@GetMapping("/index")
+	public ModelAndView index() {
+		return new ModelAndView("movie/index");
+	}
+	
 	@GetMapping("/new")
 	public ModelAndView create(ModelMap model) {
 		String[] files = {"/images/movie/西游记.jpg", "/images/movie/西游记续集.jpg"};
