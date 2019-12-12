@@ -9,6 +9,7 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.typeconversion.DateLong;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @NodeEntity
 public class MovieNeo4j {
@@ -18,6 +19,7 @@ public class MovieNeo4j {
 	private String name;
 	private String photo;
 	@DateLong
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	
 	@Relationship(type = "扮演", direction = Relationship.INCOMING)

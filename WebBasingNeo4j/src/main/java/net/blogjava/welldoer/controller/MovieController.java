@@ -18,7 +18,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,7 +54,7 @@ public class MovieController {
 	}
 	
 	@PostMapping(value = "/save")
-	public String save(@RequestBody MovieNeo4j movie) {
+	public String save(MovieNeo4j movie) {
 		movieRepository.save(movie);
 		logger.info("新增 -> ID = {}", movie.getId());
 		
