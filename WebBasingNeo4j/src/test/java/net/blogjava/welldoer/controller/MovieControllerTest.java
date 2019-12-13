@@ -1,11 +1,14 @@
 package net.blogjava.welldoer.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +42,9 @@ class MovieControllerTest {
 	private ActorNeo4jRepository mockActorRepository;
 	@MockBean
 	private Neo4jPagesService<MovieNeo4j> mockPagesService;
+	
+	@Captor
+	private ArgumentCaptor<MovieNeo4j> movieArgument;
 
 	@Test
 	void testUrlNew() throws Exception {
@@ -52,18 +58,22 @@ class MovieControllerTest {
 
 	@Test
 	void testUrlSave() throws Exception {
-		MovieNeo4j movie = new MovieNeo4j();
-		movie.setName("西游记");
-		movie.setPhoto("animal.jpg");
-		Gson gson = new Gson();
-		String json = gson.toJson(movie);
-		mockMvc.perform(
+		String formSubmittedText = "name=西游记&createDate=2019-12-13 9:33:18";
+		Date expectDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2019-12-13 9:33:18");
+		
+		MvcResult mvcResult = mockMvc.perform(
 				MockMvcRequestBuilders.post("/movie/save")
-					.contentType(MediaType.APPLICATION_JSON)
-					.content(json)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.content(formSubmittedText)
 				)
 			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andDo(MockMvcResultHandlers.print());
+			.andDo(MockMvcResultHandlers.print())
+			.andReturn();
+		
+		assertThat(mvcResult.getResponse().getContentAsString()).isEqualTo("1");
+		Mockito.verify(mockMovieRepository).save(movieArgument.capture());
+		assertThat(movieArgument.getValue().getName()).isEqualTo("西游记");
+		assertThat(movieArgument.getValue().getCreateDate()).isEqualTo(expectDate);
 	}
 	
 	@Test
