@@ -2,7 +2,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
-	compile project(':DataJpa')
+	implementation project(':DataJpa')
 	
 	testCompile "org.testcontainers:testcontainers:1.12.3"
 	testImplementation "org.testcontainers:junit-jupiter:1.12.3"
