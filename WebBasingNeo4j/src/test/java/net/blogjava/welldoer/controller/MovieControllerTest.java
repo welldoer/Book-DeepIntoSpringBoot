@@ -1,6 +1,7 @@
 package net.blogjava.welldoer.controller;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +47,9 @@ class MovieControllerTest {
 	
 	@Captor
 	private ArgumentCaptor<MovieNeo4j> movieArgument;
+	
+	@Mock
+	private MovieNeo4j mockMovie;
 
 	@Test
 	void testUrlNew() throws Exception {
@@ -108,18 +113,28 @@ class MovieControllerTest {
 
 	@Test
 	void testUrlUpdate() throws Exception {
-		MovieNeo4j movie = new MovieNeo4j();
-		movie.setName("西游记");
-		movie.setPhoto("animal.jpg");
-		Gson gson = new Gson();
-		String json = gson.toJson(movie);
-		mockMvc.perform(
+		String formSubmittedText = "id=5&name=西游记&createDate=2019-12-16 16:56:18";
+		Date expectDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2019-12-16 16:56:18");
+		
+		when(mockMovieRepository.findById(5L)).thenReturn(Optional.of(mockMovie));
+		when(mockMovie.getId()).thenReturn(5L);
+		when(mockMovie.getName()).thenReturn("西游记");
+		when(mockMovie.getCreateDate()).thenReturn(expectDate);
+		
+		MvcResult mvcResult = mockMvc.perform(
 				MockMvcRequestBuilders.post("/movie/update")
-					.contentType(MediaType.APPLICATION_JSON)
-					.content(json)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.content(formSubmittedText)
 				)
 			.andExpect(MockMvcResultMatchers.status().isOk())
-			.andDo(MockMvcResultHandlers.print());
+			.andDo(MockMvcResultHandlers.print())
+			.andReturn();
+		
+		assertThat(mvcResult.getResponse().getContentAsString()).isEqualTo("1");
+		Mockito.verify(mockMovieRepository).save(movieArgument.capture());
+		assertThat(movieArgument.getValue().getId()).isEqualTo(5);
+		assertThat(movieArgument.getValue().getName()).isEqualTo("西游记");
+		assertThat(movieArgument.getValue().getCreateDate()).isEqualTo(expectDate);
 	}
 
 	@Test
