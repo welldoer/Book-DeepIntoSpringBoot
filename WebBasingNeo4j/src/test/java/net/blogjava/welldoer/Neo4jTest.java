@@ -89,7 +89,7 @@ class Neo4jTest {
 		assertNotNull(movie);
 		logger.info("======movie======= movie: {}, {}", movie.getName(), movie.getCreateDate());
 		for (RoleNeo4j role : movie.getRoles()) {
-			logger.info("===== actor: {}, role: {}", role.getActor().getName(), role.getRole());
+			logger.info("===== actor: {}, role: {}", role.getActor().getName(), role.getName());
 		}
 	}
 

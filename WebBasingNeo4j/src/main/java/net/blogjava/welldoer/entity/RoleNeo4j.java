@@ -11,24 +11,24 @@ public class RoleNeo4j {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String role;
+	private String name;
 	@StartNode
 	ActorNeo4j actor;
 	@EndNode
 	MovieNeo4j movie;
 	
-	public RoleNeo4j(ActorNeo4j actor, MovieNeo4j movie, String role) {
+	public RoleNeo4j(ActorNeo4j actor, MovieNeo4j movie, String name) {
 		this.actor = actor;
 		this.movie = movie;
-		this.role = role;
+		this.name = name;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getRole() {
-		return role;
+	public String getName() {
+		return name;
 	}
 
 	public ActorNeo4j getActor() {

@@ -102,7 +102,7 @@ public class MovieController {
 			orig.setCreateDate(movie.getCreateDate());
 			
 			if (!StringUtils.isEmpty(rolename) && !StringUtils.isEmpty(actorid)) {
-				Optional<ActorNeo4j> actor = actorRepository.findById(Long.getLong(actorid));
+				Optional<ActorNeo4j> actor = actorRepository.findById(Long.valueOf(actorid));
 				if (actor.isPresent()) {
 					orig.addRole(actor.get(), rolename);
 				}
